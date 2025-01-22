@@ -1,5 +1,6 @@
 
 using Microsoft.EntityFrameworkCore;
+using WildTiles.Helpers;
 
 namespace WildTiles
 {
@@ -9,9 +10,9 @@ namespace WildTiles
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            //use Connection Helper rather than hard coding db info
             builder.Services.AddDbContext<Data.TilesDbContext>(options =>
-            options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-                     new MySqlServerVersion(new Version(8, 0, 25))));
+            options.UseMySql(ConnectionHelper.GetConnectionString(), new MySqlServerVersion(new Version(8, 0, 25))));
 
             // Add services to the container.
             builder.Services.AddControllers();

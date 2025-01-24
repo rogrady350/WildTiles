@@ -5,7 +5,7 @@ namespace WildTiles.Models
     public class Tile
     {
         //constant for bucket url
-        private const string BucketUrl = "https://wild-tile-images.s3.us-east-2.amazonaws.com";
+        private const string BucketUrl = Constants.BucketUrl;
 
         //parameterless constructor if needed for EF
         public Tile() { }
@@ -22,10 +22,10 @@ namespace WildTiles.Models
             setTileImage();
         }
 
-        //attributes, getters, setters
-        public int Id { get; set; }
-        public int Number { get; set; }
-        public string Color { get; set; }
+        //attributes, getters, setters (no setters for tiles, tiles immutible)
+        public int Id { get; }
+        public int Number { get; }
+        public string Color { get; }
         public string TileImageUrl { get; set; }
 
         
